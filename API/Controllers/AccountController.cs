@@ -1,5 +1,4 @@
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using API.Data;
 using API.DTOs;
@@ -7,7 +6,6 @@ using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace API.Controllers
 {
@@ -47,7 +45,7 @@ namespace API.Controllers
             };
         }
         
-        [HttpPost("login")]
+        [HttpPost("login")] // POST:  api/account/login
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
